@@ -6,8 +6,6 @@ const diceModel = require("./model");
  * @access  Public
  */
 exports.roll_dice = function(req, res) {
-    console.log(req.body)
-
     let sides = req.body.sides || 6;
     let count = req.body.diceCount || 1;
 
