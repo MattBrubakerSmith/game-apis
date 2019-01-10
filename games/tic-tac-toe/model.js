@@ -62,7 +62,7 @@ module.exports.markTile = (id, tile, callback) => {
             }
 
             if(game.freeTiles.length <= 0) {
-                game.winner = "draw";
+                game.winner = "Draw";
             }
 
             game.save(callback);
