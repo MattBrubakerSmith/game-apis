@@ -132,6 +132,11 @@ Array.prototype.shuffle = function() {
     return input;
 }
 
-module.exports.getDeck = () => {
-    return deckGenerator().shuffle();
+module.exports.getDeck = (deckCount, withJokers, callback) => {
+    if(typeof(deckCount) !== "number") {
+        callback(new console.error("The deckCount must be a number!"));
+    }
+
+    let deck = deckGenerator(deckCount, withJokers);
+    callback(deck);
 }

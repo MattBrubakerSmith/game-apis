@@ -29,5 +29,6 @@ app.use("/games/dice", require("./games/dice/routes"));
 app.use("/games/cards", require("./games/cards/routes"));
 app.use("/games/tic-tac-toe", require("./games/tic-tac-toe/routes"));
 app.use("/games/rps", require("./games/rock-paper-scissors/routes"));
+app.use("/games/qc", require("./games/quick-change/routes"));
 
 module.exports = app;
