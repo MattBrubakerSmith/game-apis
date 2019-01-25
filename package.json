@@ -4,7 +4,8 @@
   "description": "Matthew Brubaker Smith's collection of simple game APIs.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node .bin/www",
+    "devstart": "nodemon .bin/www"
   },
   "author": "Matthew Brubaker Smith",
   "license": "ISC",

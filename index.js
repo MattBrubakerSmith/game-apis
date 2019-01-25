@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const http = require("http");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const path = require("path");
@@ -9,12 +8,6 @@ const path = require("path");
 const app = express();
 app.use(logger("dev"));
 app.use(bodyParser.json());
-
-// HTTP
-const server = http.createServer(app);
-server.listen(3000, () => {
-    console.log("Connected to the HTTP server!");
-})
 
 // MongoDB
 const db = require("./data/config").games;
