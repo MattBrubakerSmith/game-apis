@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const http = require("http");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const path = require("path");
 
 // Express
 const app = express();
@@ -25,6 +26,12 @@ mongoose.connect(db, {
 .then(() => console.log("MongoDB Connected!"))
 .catch((err) => console.error(err));
 
+// EJS Views
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+// Routes
+app.use("/", require("./routes"));
 app.use("/games/dice", require("./games/dice/routes"));
 app.use("/games/cards", require("./games/cards/routes"));
 app.use("/games/tic-tac-toe", require("./games/tic-tac-toe/routes"));
