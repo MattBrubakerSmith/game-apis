@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Matthew Brubaker Smith's collection of simple game APIs.",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node .bin/www",
-    "devstart": "nodemon .bin/www"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "author": "Matthew Brubaker Smith",
   "license": "ISC",
