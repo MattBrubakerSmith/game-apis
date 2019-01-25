@@ -5,8 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
-    TEST
+    <div class="container mt-4 p-3 bg-primary text-white rounded">
+        <h1>Simple Game API's</h1>
+        <h5>By Matthew Brubaker Smith</h5>
+    </div>
+    <div class="container mt-3 p-3 border rounded">
+        <h4>Cards API</h4>
+        <hr />
+        <p>The cards API is very basic, and is not actually a game per se. It has one endpoint and will return a JSON array of card objects representing a deck of cards. The deck comes preshuffled.</p>
+        <h5>Endpoints</h5>
+        <ul>
+            <li>
+                <p class="mb-0"><span class="font-weight-bold text-success">GET</span> a deck of cards:</p>
+                <p>https://game-apis.herokuapp.com<span class="font-weight-bold">/games/cards</span></p>
+                <h6>Headers</h6>
+                <ul>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Optional</p>
+                        <p class="mb-0 font-weight-bold">deck-count <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">number</span></p>
+                        <p>Request a specific number of decks. If multiple decks are requested, they will be shuffled together into one large deck. Omitting this header will default <span class="font-italic">deck-count</span> to 1.</p>
+                    </li>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Optional</p>
+                        <p class="mb-0 font-weight-bold">with-jokers <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">boolean</span></p>
+                        <p>Request the inclusion of jokers. If used in conjunction with the <span class="font-italic">deck-count</span> header, two jokers will be included per deck. Omitting this header will default <span class="font-italic">with-jokers</span> to false.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container mt-3 p-3 border rounded">
+        <h4>Dice API</h4>
+        <hr />
+        <p>Like the Cards API, the Dice API is not a game in and of itself. It simply returns the result of a dice roll.</p>
+        <h5>Endpoints</h5>
+        <ul>
+            <li>
+                <p class="mb-0"><span class="font-weight-bold text-success">GET</span> the results of a dice roll:</p>
+                <p>https://game-apis.herokuapp.com<span class="font-weight-bold">/games/dice</span></p>
+                <h6>Headers</h6>
+                <ul>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Optional</p>
+                        <p class="mb-0 font-weight-bold">dice-count <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">number</span></p>
+                        <p>Number of dice. Omitting this header will default the <span class="font-italic">dice-count</span> to 1.</p>
+                    </li>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Optional</p>
+                        <p class="mb-0 font-weight-bold">side-count <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">number</span></p>
+                        <p>Number of sides per die. Omitting this header will default the <span class="font-italic">side-count</span> to 6.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container mt-3 p-3 border rounded">
+        <h4>Quick Change API</h4>
+        <hr />
+        <p>Quick Change is a game where players look at a pile of coins and have to determine their total value as quickly as possible. The Quick Change API simply returns a JSON object that represents a pile of coins, including the correct answer for the total value.</p>
+        <h5>Endpoints</h5>
+        <ul>
+            <li>
+                <p class="mb-0"><span class="font-weight-bold text-success">GET</span> a Quick Change game object:</p>
+                <p>https://game-apis.herokuapp.com<span class="font-weight-bold">/games/qc</span></p>
+                <h6>Headers</h6>
+                <ul>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Optional</p>
+                        <p class="mb-0 font-weight-bold">difficulty <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>Select a difficulty for the game that affects the maximum possible number of coins. The options are <span class="font-italic">easy</span>, <span class="font-italic">medium</span>, or <span class="font-italic">hard</span>. If this header is omitted, the <span class="font-italic">difficulty</span> defaults to <span class="font-italic">easy</span>.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container mt-3 p-3 border rounded">
+        <h4>Rock Paper Scissors API</h4>
+        <hr />
+        <p>Exactly what it sounds like! Play Rock Paper Scissors against a CPU opponent.</p>
+        <h5>Endpoints</h5>
+        <ul>
+            <li>
+                <p class="mb-0"><span class="font-weight-bold text-success">POST</span> your RPS selection:</p>
+                <p>https://game-apis.herokuapp.com<span class="font-weight-bold">/games/rps</span></p>
+                <h6>Parameters</h6>
+                <ul>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Required</p>
+                        <p class="mb-0 font-weight-bold">choice <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>Set to either "R" for rock, "P" for paper, or "S" for scissors. The returned object has the properties <span class="font-italic">playerChoice</span> for the player's choice, <span class="font-italic">compChoice</span> for the CPU opponent's choice, and <span class="font-italic">winner</span> which will be either "Player", "Computer", or "Draw".</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container mt-3 p-3 border rounded">
+        <h4>Tic-Tac-Toe API</h4>
+        <hr />
+        <p>Play Tic-Tac-Toe against another human opponent. The Tic-Tac-Toe games are served through a publicly accessible MongoDB collection, so they can theoretically be used to play between opponents using different devices. Unlike the rest of my game APIs, Tic-Tac-Toe actually resolves the game's win condition for you and sets the returned object's <span class="font-italic">winner</span> property accordingly.</p>
+        <h5>Endpoints</h5>
+        <ul>
+            <li>
+                <p class="mb-0"><span class="font-weight-bold text-success">GET</span> request to start a new game:</p>
+                <p>https://game-apis.herokuapp.com<span class="font-weight-bold">/games/tic-tac-toe/new</span></p>
+                <p>Returns a Tic-Tac-Toe game object with the following properties:</p>
+                <ul>
+                    <li>
+                        <p class="font-weight-bold mb-0">id <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>The unique ID for the specific game. It is required as a header when posting to <span class="font-weight-bold">/games/tic-tac-toe</span>.</p>
+                    </li>
+                    <li>
+                        <p class="font-weight-bold mb-0">currentPlayer <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>Either "X" or "O". "X" always goes first.</p>
+                    </li>
+                    <li>
+                        <p class="font-weight-bold mb-0">xTiles <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">[string]</span></p>
+                        <p>Array of tiles owned by player X.</p>
+                    </li>
+                    <li>
+                        <p class="font-weight-bold mb-0">oTiles <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">[string]</span></p>
+                        <p>Array of tiles owned by player O.</p>
+                    </li>
+                    <li>
+                        <p class="font-weight-bold mb-0">freeTiles <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">[string]</span></p>
+                        <p>Array of tiles that are still available to players.</p>
+                    </li>
+                    <li>
+                        <p class="font-weight-bold mb-0">winner <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>Winner of the game. It will an empty string until a winner is determined, in which case it will either be "X" or "O".</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p class="mb-0"><span class="font-weight-bold text-success">POST</span> request to mark a Tic-Tac-Toe tile:</p>
+                <p>https://game-apis.herokuapp.com<span class="font-weight-bold">/games/tic-tac-toe/</span></p>
+                <p>Returns an updated Tic-Tac-Toe game object.</p>
+                <h6>Headers</h6>
+                <ul>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Required</p>
+                        <p class="mb-0 font-weight-bold">game-id <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>Unique ID for the relevant Tic-Tac-Toe game.</p>
+                    </li>
+                </ul>
+                <h6>Parameters</h6>
+                <ul>
+                    <li>
+                        <p class="font-italic text-muted mb-0">Required</p>
+                        <p class="mb-0 font-weight-bold">tile <span class="font-weight-light text-muted font-italic text-white bg-light rounded ml-1" style="font-size: smaller">string</span></p>
+                        <p>Tile selection for the <span class="font-italic">currentPlayer</span>.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

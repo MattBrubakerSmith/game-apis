@@ -1,4 +1,12 @@
-module.exports.rollDice = (sides, diceCount) => {
+module.exports.rollDice = (sides, diceCount, callback) => {
+    if(Number.isNaN(sides)) {
+        throw new Error("The side-count header must be a number!");
+    }
+
+    if(Number.isNaN(diceCount)) {
+        throw new Error("The dice-count header must be a number!");
+    }
+    
     let diceValues = [];
     let total = 0;
 
@@ -8,8 +16,8 @@ module.exports.rollDice = (sides, diceCount) => {
         total += roll;
     }
 
-    return {
+    callback({
         diceValues: diceValues,
         total: total
-    }
+    });
 }

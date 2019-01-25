@@ -14,8 +14,7 @@ module.exports.getChange = (difficulty, callback) => {
             break;
         }
         default: {
-            callback(new console.error(`"${difficulty}" is not a valid difficulty! It must be either "easy", "medium", or "hard".`))
-            break;
+            throw new Error(`"${difficulty}" is not a valid difficulty! It must be either "easy", "medium", or "hard".`);
         }
     }
     callback(game);

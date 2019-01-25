@@ -1,13 +1,19 @@
 const diceModel = require("./model");
 
 /**
- * @route   POST games/dice
+ * @route   GET games/dice
  * @desc    Roll some dice
  * @access  Public
  */
 exports.roll_dice = function(req, res) {
-    let sides = req.body.sides || 6;
-    let count = req.body.diceCount || 1;
+    let sides = req.headers["side-count"] ? parseInt(req.headers["side-count"]) : 6;
+    let count = req.headers["dice-count"] ? parseInt(req.headers["dice-count"]) : 1;
 
-    res.status(200).send(diceModel.rollDice(sides, count));
+    diceModel.rollDice(sides, count, (results, err) => {
+        if(err) {
+            res.status(400).send(err);
+        }
+
+        res.status(200).send(results);
+    });
 }

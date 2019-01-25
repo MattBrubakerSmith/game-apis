@@ -13,7 +13,7 @@ exports.shoot = (req, res) => {
 
     RPS.shoot(req.body.choice, (rpsResults, err) => {
         if(err) {
-            return res.status(500).send(err);
+            return res.status(400).send(err);
         }
 
         res.status(200).send(rpsResults);

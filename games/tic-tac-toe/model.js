@@ -68,7 +68,7 @@ module.exports.markTile = (id, tile, callback) => {
             game.save(callback);
         }
         else {
-            callback(new console.error("That tile is already taken!"));
+            throw new Error("That tile is already taken!");
         }
     })
 }

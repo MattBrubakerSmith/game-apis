@@ -133,10 +133,10 @@ Array.prototype.shuffle = function() {
 }
 
 module.exports.getDeck = (deckCount, withJokers, callback) => {
-    if(typeof(deckCount) !== "number") {
-        callback(new console.error("The deckCount must be a number!"));
+    if(Number.isNaN(deckCount)) {
+        throw new Error("The deck-count header must be a number!");
     }
 
     let deck = deckGenerator(deckCount, withJokers);
-    callback(deck);
+    callback(deck.shuffle());
 }

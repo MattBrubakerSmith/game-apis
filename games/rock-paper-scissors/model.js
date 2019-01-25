@@ -1,6 +1,10 @@
 module.exports.shoot = (choice, callback) => {
-    let rpsOptions = ["R", "P", "S"];
-    let compChoice = rpsOptions[Math.floor(Math.random() * 3)];
+    if(choice !== "R" && choice !== "P" && choice !== "S") {
+        throw new Error(`${choice} is an invalid option! It must be either R, P, or S.`);
+    }
+
+    let options = ["R", "P", "S"];
+    let compChoice = options[Math.floor(Math.random() * 3)];
 
     let winner;
 
@@ -18,8 +22,7 @@ module.exports.shoot = (choice, callback) => {
             break;
         }
         default: {
-            callback(new console.error(`"${choice}" is an invalid option! It must be either "R", "P", or "S".`));
-            return;
+            break;
         }
     }
 
